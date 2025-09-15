@@ -166,7 +166,7 @@ def update():
             elif campo == 4:
                 campo = 'nacionalidade'
                 print('=-' * 25)
-                novo_valor = str(input('Digite uma nova nacionalidade:\n>> '))
+                novo_valor = str(input('Digite uma nova nacionalidade:\n>> ')).capitalize()
                 break
             else:
                 print('=-' * 25)
