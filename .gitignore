@@ -1,0 +1,22 @@
+# Arquivos do banco de dados SQLite
+*.db
+*.sqlite3
+
+# Arquivos de cache do Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ambiente virtual
+venv/
+.env/
+
+# Arquivos temporários de IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
