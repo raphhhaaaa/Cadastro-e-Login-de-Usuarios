@@ -44,7 +44,7 @@ Cadastro_usuario/
 ## ▶️ Como executar
 Clone este reposítorio e execute o programa no terminal:
 ```bash
-git clone https://github.com/raphhhaaaa/Cadastro_usuario.git
+git clone https://github.com/raphhhaaaa/Cadastro-e-Login-de-Usuarios.git
 ```
 ```bash
 cd Cadastro_usuario
