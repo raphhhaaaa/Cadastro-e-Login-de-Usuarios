@@ -107,8 +107,7 @@ def tela_usuario(usuario):
           de um sistema, buscando alcançar características como: estabilidade, funcionabilidade, escalabilidade e segurança. Bem como, praticar conceitos
           de boas práticas em todo o ciclo de desenvolvimento, desde a implementação, até a documentação e ao commit no GitHub.
           Se chegou até aqui e ainda não explorou as outras funcionalidades do sistema, por favor, fique à vontade.
-          Ademais, agradeço a qualquer que seja a pessoa que dedicou sua atenção ao meu projeto, sou apenas um estudante
-          ambicioso e apaixonado, portanto sinta-se livre para relatar críticas construtivas.
+          Ademais, agradeço a qualquer que seja a pessoa que dedicou sua atenção ao meu projeto, sinta-se livre para relatar críticas construtivas.
                             Obrigado pelo seu tempo :)\n
           - Raphael  """)
     print('=-' * 25)
