@@ -3,6 +3,9 @@ import sqlite3
 DB_NAME = 'usuarios.db'
 
 def init_db():
+    ''''
+    Inicializa/Cria uma tabela *usuarios*.
+    '''
     conn = sqlite3.connect(DB_NAME)
     cursor = conn.cursor()
     cursor.execute("""
@@ -19,6 +22,9 @@ def init_db():
     conn.close()
 
 def cadastro_usuario(usuario, nascimento, sexo, nacionalidade, hash):
+    '''
+    Recebe como parâmetros os dados de um *usuário* e os insere na tabela *usuarios*.
+    '''
     conn = None
     try:
         conn = sqlite3.connect(DB_NAME)
@@ -36,6 +42,9 @@ def cadastro_usuario(usuario, nascimento, sexo, nacionalidade, hash):
             conn.close()
 
 def mostrar_usuarios():
+    '''
+    Retorna uma lista de tuplas com os dados de todos os usuários cadastrados no banco.
+    '''
     conn = sqlite3.connect(DB_NAME)
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM usuarios")
@@ -44,6 +53,10 @@ def mostrar_usuarios():
     return usuarios
 
 def apagar_usuario(id):
+    '''
+    Deleta permanentemente toda uma linha da coluna *usuario* através de seu *id*. É necessário que *id* exista
+    e esteja relacionado a algum usuário cadastrado no banco. 
+    '''
     conn = None
     try:
         conn = sqlite3.connect(DB_NAME)
@@ -61,6 +74,9 @@ def apagar_usuario(id):
             conn.close()
 
 def pega_hashsenha(usuario):
+    '''
+    Retornar o hash da senha de determinado *usuario*.
+    '''
     conn = sqlite3.connect(DB_NAME)
     cursor = conn.cursor()
     cursor.execute("SELECT hash FROM usuarios WHERE usuario = ?", (usuario,))
@@ -71,6 +87,10 @@ def pega_hashsenha(usuario):
     return senha
 
 def atualiza_dados(campo, novo_valor, id):
+    '''
+    Atualiza qualquer *campo* / coluna da tabela *usuarios*, através de um *id* fornecido. É necessário que *id* exista
+    e esteja relacionado a algum usuário cadastrado no banco. 
+    '''
     conn = None
     try:
         conn = sqlite3.connect(DB_NAME)
@@ -88,6 +108,9 @@ def atualiza_dados(campo, novo_valor, id):
             conn.close()
 
 def mostra_ids():
+    '''
+    Retorna uma lista com todos os IDs cadastrados no banco.
+    '''
     conn = sqlite3.connect(DB_NAME)
     cursor = conn.cursor()
     cursor.execute("SELECT id FROM usuarios")

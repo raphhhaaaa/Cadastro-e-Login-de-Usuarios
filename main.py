@@ -2,6 +2,9 @@ from db import *
 import hashlib
 
 def main():
+    '''
+    Inicializa o banco de dados e 'ativa' o menu, prosseguindo para outras funções conforme valor de *opcoes*.
+    '''
     init_db()
     while True:
         opcao = None
@@ -43,8 +46,11 @@ def main():
         input(f'{"<< ENTER para voltar ao menu >> ":.<100}')
 
 def menu():
+    '''
+    Retorna uma interface visual simples no terminal, mostrando as opções disponíveis para o usuário.
+    '''
     print('=-' * 25)
-    print('BEM-VINDO AO {NOME DO APLICATIVO}!!'.center(50))
+    print('BEM-VINDO AO MEU PROJETO!!'.center(50))
     print('=-' * 25, '\nPor favor escolha uma opção:', end='\n')
     print('1. Cadastro (\033[1;32mC\033[mRUD)\n2. Login\n3. Sair')
     print('=-' * 25)
@@ -52,6 +58,11 @@ def menu():
     print('=-' * 25)
 
 def cadastro():
+    '''
+    Colhe os dados do usuário, tais como *usuario* (nome de usuario), *nascimento* (ano), *sexo*, *nacionalidade* e 
+    *senha*. Após, chama a função **cadastro_usuario** do banco de dados com os parâmetros fornecidos. Também gera um hash
+    SHA-256 com a senha do usuário para maior segurança no armazenamento.
+    '''
     print('=-' * 25)
     print('Seja bem-vindo ao cadastro! Por favor insira suas informações:')
     usuario = str(input('Nome de usuário:\n>> '))
@@ -66,6 +77,10 @@ def cadastro():
         print('=-' * 25)
 
 def login():
+    '''
+    Realiza a comparação de dados, entre o *usuario* e *senha* fornecidos, e os previamente armazenados no banco (atraves de **cadastro**).
+    Caso sejam autênticos o login é efetuado com sucesso. Caso contrário, uma mensagem de erro é exibida.
+    '''
     print('=-' * 25)
     print('Seja bem-vindo ao login! Por favor insira suas informações:')
     usuario = str(input('Nome de usuário: '))
@@ -81,6 +96,9 @@ def login():
         print('=-' * 25)
 
 def tela_usuario(usuario):
+    '''
+    Tela final do sistema, exibida após um login bem sucedido.
+    '''
     print(f'Olá {usuario} !'.center(50))
     print('=-' * 25)
     print("""Olá,\n
@@ -96,6 +114,10 @@ def tela_usuario(usuario):
     print('=-' * 25)
 
 def __listar_usuarios__():
+    '''
+    Retorna uma string formatada com os dados de todos os usuários registrados no banco. Caso não hajam usuários cadastrados, retorna
+    'Nenhum usuário cadastrado'.
+    '''
     usuarios = mostrar_usuarios()
     if not usuarios:
         print('=-' * 25)
@@ -108,6 +130,9 @@ def __listar_usuarios__():
         print('=-' * 50)
 
 def __apaga_cadastro__():
+    '''
+    Deleta completamente todos os dados de um usuário, através de um *id* fornecido. 
+    '''
     try:
         id = int(input('Digite o id do usuario que deseja apagar:\n>> '))
         apagar_usuario(id)
@@ -120,6 +145,10 @@ def __apaga_cadastro__():
         print('=-' * 25)
 
 def __gera_hash_sha256__(senha):
+    '''
+    Algoritimo de hash criptográfico. Converte a *senha* do usuario em uma string única e de comprimento fixo de 256 bits,
+    equivalente a 64 caracteres alfanuméricos
+    '''
     senha_bytes = senha.encode('utf-8')
     obj_hash = hashlib.sha256()
     obj_hash.update(senha_bytes)
@@ -127,6 +156,9 @@ def __gera_hash_sha256__(senha):
     return hash_final
 
 def update():
+    '''
+    Atualiza qualquer campo de um usuário através de um *id* fornecido. É necessário que o *id* fornecido exista no banco.
+    '''
     usuarios = mostrar_usuarios()
     if not usuarios:
         print('=-' * 25)
